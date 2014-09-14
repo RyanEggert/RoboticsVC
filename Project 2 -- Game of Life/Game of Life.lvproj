@@ -26,6 +26,7 @@
 		<Item Name="Think.vi" Type="VI" URL="../Think.vi"/>
 		<Item Name="Act.vi" Type="VI" URL="../Act.vi"/>
 		<Item Name="ReadSensor.vi" Type="VI" URL="../ReadSensor.vi"/>
+		<Item Name="Think 2.vi" Type="VI" URL="../Think 2.vi"/>
 		<Item Name="Dependencies" Type="Dependencies">
 			<Item Name="vi.lib" Type="Folder">
 				<Item Name="subDisplayMessage.vi" Type="VI" URL="/&lt;vilib&gt;/express/express output/DisplayMessageBlock.llb/subDisplayMessage.vi"/>
