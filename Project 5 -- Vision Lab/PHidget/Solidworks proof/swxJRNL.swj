@@ -1,0 +1,37 @@
+' ******************************************************************************
+' swxJRNL.swj - journal recorded on 09/08/14 by GARLAND
+' *****************************************************************************
+Dim swApp As Object
+Dim Part As Object
+Dim boolstatus As Boolean
+Dim longstatus As Long
+Dim Annotation As Object
+Dim Gtol As Object
+Dim DatumTag As Object
+Dim FeatureData As Object
+Dim Feature As Object
+Dim Component As Object
+Sub main()
+
+Set swApp = Application.SldWorks
+
+Set Part = swApp.OpenDoc4 ("C:\Users\GARLAND\Documents\Projects\Robotics I\Robotics I 3390 2014\Laser pointer\laser scanner Y solution.SLDPRT", 1, 0, "", longstatus)
+Set Part = swApp.ActivateDoc ("laser scanner Y solution.SLDPRT")
+swApp.ActiveDoc.ActiveView.FrameWidth = 1347
+swApp.ActiveDoc.ActiveView.FrameHeight = 743
+boolstatus = Part.Extension.SelectByID("Sketch1", "SKETCH", 0, 0, 0, False, 0, Nothing)
+Part.EditSketch
+Part.ClearSelection
+boolstatus = Part.Extension.SelectByID("Line4", "SKETCHSEGMENT", 0.4056323156302, 0.1397471368094, 0, False, 0, Nothing)
+Part.AddDimension 0.356349, 0.197728, 0
+Part.ClearSelection
+' MSGBOX
+' This dimension is over defined.  Its value cannot be changed.
+
+Part.ClearSelection
+Part.EditRebuild
+Part.Save2 FALSE
+Set Part = Nothing
+swApp.CloseDoc "laser scanner Y solution.SLDPRT"
+swApp.ExitApp
+End Sub

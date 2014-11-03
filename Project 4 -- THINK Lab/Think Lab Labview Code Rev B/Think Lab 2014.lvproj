@@ -22,6 +22,7 @@
 		<Item Name="pointer stuff" Type="Folder"/>
 		<Item Name="boat image.png" Type="Document" URL="../boat image.png"/>
 		<Item Name="boatStatus.ctl" Type="VI" URL="../boatStatus.ctl"/>
+		<Item Name="buoyfindfirstwp.vi" Type="VI" URL="../buoyfindfirstwp.vi"/>
 		<Item Name="gpstoservo.vi" Type="VI" URL="../gpstoservo.vi"/>
 		<Item Name="pool image 1 buoy.png" Type="Document" URL="../pool image 1 buoy.png"/>
 		<Item Name="pool image wall and buoy.png" Type="Document" URL="../pool image wall and buoy.png"/>
@@ -30,9 +31,13 @@
 		<Item Name="TL at the waypoint.vi" Type="VI" URL="../TL at the waypoint.vi"/>
 		<Item Name="TL behavior FWD obstacle avoidance.vi" Type="VI" URL="../TL behavior FWD obstacle avoidance.vi"/>
 		<Item Name="TL behavior get unstuck.vi" Type="VI" URL="../TL behavior get unstuck.vi"/>
+		<Item Name="TL behavior get unstuck_D.vi" Type="VI" URL="../TL behavior get unstuck_D.vi"/>
+		<Item Name="TL behavior get unstuck_D2.vi" Type="VI" URL="../TL behavior get unstuck_D2.vi"/>
 		<Item Name="TL behavior obstacle avoidance.vi" Type="VI" URL="../TL behavior obstacle avoidance.vi"/>
 		<Item Name="TL behavior P-Wall.vi" Type="VI" URL="../TL behavior P-Wall.vi"/>
 		<Item Name="TL behavior S-Wall.vi" Type="VI" URL="../TL behavior S-Wall.vi"/>
+		<Item Name="TL behavior S-Wall_D.vi" Type="VI" URL="../TL behavior S-Wall_D.vi"/>
+		<Item Name="TL behavior S-WallUPDATE.vi" Type="VI" URL="../TL behavior S-WallUPDATE.vi"/>
 		<Item Name="TL calculate compass heading.vi" Type="VI" URL="../TL calculate compass heading.vi"/>
 		<Item Name="TL calculate power used.vi" Type="VI" URL="../TL calculate power used.vi"/>
 		<Item Name="TL calculate steering angle.vi" Type="VI" URL="../TL calculate steering angle.vi"/>
@@ -54,6 +59,7 @@
 		<Item Name="TL read IR sensors.vi" Type="VI" URL="../TL read IR sensors.vi"/>
 		<Item Name="TL show the boat.vi" Type="VI" URL="../TL show the boat.vi"/>
 		<Item Name="TL simulate the boat.vi" Type="VI" URL="../TL simulate the boat.vi"/>
+		<Item Name="updateMDF.vi" Type="VI" URL="../updateMDF.vi"/>
 		<Item Name="Dependencies" Type="Dependencies">
 			<Item Name="vi.lib" Type="Folder">
 				<Item Name="Acquire Input Data.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/inputDevices.llb/Acquire Input Data.vi"/>
@@ -78,16 +84,22 @@
 				<Item Name="IMAQ Overlay Rectangle" Type="VI" URL="/&lt;vilib&gt;/vision/Overlay.llb/IMAQ Overlay Rectangle"/>
 				<Item Name="IMAQ ReadFile" Type="VI" URL="/&lt;vilib&gt;/vision/Files.llb/IMAQ ReadFile"/>
 				<Item Name="Intialize Keyboard.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/inputDevices.llb/Intialize Keyboard.vi"/>
+				<Item Name="IVA Append VI Name to GUID.vi" Type="VI" URL="/&lt;vilib&gt;/vision/Vision Assistant Utils.llb/IVA Append VI Name to GUID.vi"/>
+				<Item Name="IVA Result Manager Function.ctl" Type="VI" URL="/&lt;vilib&gt;/vision/Vision Assistant Utils.llb/IVA Result Manager Function.ctl"/>
+				<Item Name="IVA Result Manager.vi" Type="VI" URL="/&lt;vilib&gt;/vision/Vision Assistant Utils.llb/IVA Result Manager.vi"/>
+				<Item Name="IVA Store Circles Results.vi" Type="VI" URL="/&lt;vilib&gt;/vision/Vision Assistant Utils.llb/IVA Store Circles Results.vi"/>
 				<Item Name="joystickAcquire.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/inputDevices.llb/joystickAcquire.vi"/>
 				<Item Name="keyboardAcquire.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/inputDevices.llb/keyboardAcquire.vi"/>
 				<Item Name="lvpidtkt.dll" Type="Document" URL="/&lt;vilib&gt;/addons/control/pid/lvpidtkt.dll"/>
 				<Item Name="mouseAcquire.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/inputDevices.llb/mouseAcquire.vi"/>
 				<Item Name="NI_AALBase.lvlib" Type="Library" URL="/&lt;vilib&gt;/Analysis/NI_AALBase.lvlib"/>
-				<Item Name="NI_AALPro.lvlib" Type="Library" URL="/&lt;vilib&gt;/Analysis/NI_AALPro.lvlib"/>
 				<Item Name="NI_FileType.lvlib" Type="Library" URL="/&lt;vilib&gt;/Utility/lvfile.llb/NI_FileType.lvlib"/>
 				<Item Name="NI_Gmath.lvlib" Type="Library" URL="/&lt;vilib&gt;/gmath/NI_Gmath.lvlib"/>
 				<Item Name="NI_PID__prctrl compat.lvlib" Type="Library" URL="/&lt;vilib&gt;/addons/control/pid/NI_PID__prctrl compat.lvlib"/>
 				<Item Name="NI_PID_pid.lvlib" Type="Library" URL="/&lt;vilib&gt;/addons/control/pid/NI_PID_pid.lvlib"/>
+				<Item Name="NI_Vision_Development_Module.lvlib" Type="Library" URL="/&lt;vilib&gt;/vision/NI_Vision_Development_Module.lvlib"/>
+				<Item Name="Vision Info Type" Type="VI" URL="/&lt;vilib&gt;/vision/Image Controls.llb/Vision Info Type"/>
+				<Item Name="Vision Info Type2.ctl" Type="VI" URL="/&lt;vilib&gt;/vision/Image Controls.llb/Vision Info Type2.ctl"/>
 			</Item>
 			<Item Name="_AttachCHK.vi" Type="VI" URL="../pointer stuff/Library/Common Functions/Subvi/_AttachCHK.vi"/>
 			<Item Name="_ChkError.vi" Type="VI" URL="../pointer stuff/Library/Common Functions/Subvi/_ChkError.vi"/>
@@ -104,7 +116,9 @@
 			<Item Name="AdvServoSetPos.vi" Type="VI" URL="../pointer stuff/Library/AdvancedServo/AdvServoSetPos.vi"/>
 			<Item Name="Close Act servos.vi" Type="VI" URL="../pointer stuff/Close Act servos.vi"/>
 			<Item Name="ErrorHandler.vi" Type="VI" URL="../pointer stuff/Library/Common Functions/ErrorHandler.vi"/>
+			<Item Name="findbuoyVA.vi" Type="VI" URL="../findbuoyVA.vi"/>
 			<Item Name="Init Act servos.vi" Type="VI" URL="../pointer stuff/Init Act servos.vi"/>
+			<Item Name="laserzzzz.vi" Type="VI" URL="../laserzzzz.vi"/>
 			<Item Name="lvanlys.dll" Type="Document" URL="/&lt;resource&gt;/lvanlys.dll"/>
 			<Item Name="lvinput.dll" Type="Document" URL="/&lt;resource&gt;/lvinput.dll"/>
 			<Item Name="Move the pointer.vi" Type="VI" URL="../pointer stuff/Move the pointer.vi"/>
@@ -119,6 +133,7 @@
 			</Item>
 			<Item Name="PhidgetClose.vi" Type="VI" URL="../pointer stuff/Library/Common Functions/PhidgetClose.vi"/>
 			<Item Name="PhidgetOpen.vi" Type="VI" URL="../pointer stuff/Library/Common Functions/PhidgetOpen.vi"/>
+			<Item Name="updateMDF_Z.vi" Type="VI" URL="../updateMDF_Z.vi"/>
 		</Item>
 		<Item Name="Build Specifications" Type="Build"/>
 	</Item>
